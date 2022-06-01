@@ -2,18 +2,17 @@ package template
 
 import (
 	"errors"
-	"io"
 	"io/fs"
+	"net/http"
 
 	"github.com/flosch/pongo2/v5"
-	"github.com/honmaple/forest"
 )
 
 type Pongo2Template struct {
 	templateSet *pongo2.TemplateSet
 }
 
-func (s *Pongo2Template) Render(w io.Writer, name string, data interface{}, c forest.Context) error {
+func (s *Pongo2Template) Render(w http.ResponseWriter, name string, data interface{}) error {
 	template, err := s.templateSet.FromCache(name)
 	if err != nil {
 		return errors.New("template not found")

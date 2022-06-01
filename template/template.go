@@ -5,10 +5,9 @@ import (
 	"html/template"
 	"io"
 	"io/fs"
+	"net/http"
 	"path/filepath"
 	"strings"
-
-	"github.com/honmaple/forest"
 )
 
 type EmbedLoader struct {
@@ -38,7 +37,7 @@ type Template struct {
 	templates *template.Template
 }
 
-func (t *Template) Render(w io.Writer, name string, data interface{}, c forest.Context) error {
+func (t *Template) Render(w http.ResponseWriter, name string, data interface{}) error {
 	return t.templates.ExecuteTemplate(w, name, data)
 }
 

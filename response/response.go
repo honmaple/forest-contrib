@@ -59,7 +59,7 @@ func Render(c forest.Context, code int, data ...interface{}) error {
 }
 
 func OK(c forest.Context, data ...interface{}) error {
-	return Render(c, http.StatusOK, data)
+	return Render(c, http.StatusOK, data...)
 }
 
 func BadRequest(c forest.Context, data ...interface{}) error {
