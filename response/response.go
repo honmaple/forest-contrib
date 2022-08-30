@@ -9,7 +9,7 @@ import (
 type PageInfo struct {
 	Page     int   `json:"page"  query:"page"`
 	Limit    int   `json:"limit" query:"limit"`
-	Total    int64 `json:"total"`
+	Total    int64 `json:"total" query:"-" swaggerignore:"true"`
 	NotLimit bool  `json:"-"`
 }
 
